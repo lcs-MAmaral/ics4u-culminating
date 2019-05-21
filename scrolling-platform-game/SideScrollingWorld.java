@@ -66,12 +66,28 @@ public class SideScrollingWorld extends World
     private void setup()
     {
         // TO STUDENTS: Add, revise, or remove methods as needed to define your own game's world
-        addLeftGround();
-        addFences();
-        addMetalPlateSteps();
-        addClouds();
-        addRightGround();
+        // addLeftGround();
+        // addFences();
+        // addMetalPlateSteps();
+        // addClouds();
+        // addRightGround();
+        
+        matthewLevel();
+        
         addHero();
+    }
+    
+    /**
+     * Matthew's level
+     */
+    private void matthewLevel()
+    {
+        
+        // Block group 1
+        
+        
+        // Block group 2
+        
     }
 
     /**
