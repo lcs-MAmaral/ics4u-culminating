@@ -5,6 +5,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * 
  * @author R. Gordon
  * @version May 8, 2019
+ * 
+ * "Mr. Gordon says hi!"
+ * "Mr. Gordon says hi again."
+ * 
  */
 public class SideScrollingWorld extends World
 {
