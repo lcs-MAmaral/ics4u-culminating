@@ -78,7 +78,7 @@ public class SideScrollingWorld extends World
     }
     
     /**
-     * Matthew's level
+     * Matthew's level.
      */
     private void matthewLevel()
     {
