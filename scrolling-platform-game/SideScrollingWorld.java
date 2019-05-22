@@ -84,7 +84,8 @@ public class SideScrollingWorld extends World
     {
         
         // Block group 1
-        
+        addLeftGround();
+        addRightGround();
         
         // Block group 2
         
