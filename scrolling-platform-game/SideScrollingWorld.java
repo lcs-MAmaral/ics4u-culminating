@@ -66,21 +66,33 @@ public class SideScrollingWorld extends World
     private void setup()
     {
         // TO STUDENTS: Add, revise, or remove methods as needed to define your own game's world
-        addLeftGround();
-        addFences();
-        addMetalPlateSteps();
-        addClouds();
-        addRightGround();
-        addHero();
+        // addLeftGround();
+        // addFences();
+        // addMetalPlateSteps();
+        // addClouds();
+        // addRightGround();
+        
+        GeoffLevel();
+         addHero();
     }
 
+    private void GeoffLevel()
+    {
+        addLeftGround();
+        addMiddleGround();
+        addMiddleGround2();
+        addClouds();
+        addmetalPlates();
+    }
+  
+    
     /**
      * Add blocks to create the ground to walk on at bottom-left of scrollable world.
      */
     private void addLeftGround()
     {
         // How many tiles will cover the bottom of the initial visible area of screen?
-        final int tilesToCreate = getWidth() / TILE_SIZE;
+        final int tilesToCreate = getWidth() / TILE_SIZE / 2;
 
         // Loop to create and add the tile objects
         for (int i = 0; i < tilesToCreate; i += 1)
@@ -98,67 +110,58 @@ public class SideScrollingWorld extends World
         }
     }
 
-    /**
-     * Add some fences at left and right side.
-     */
-    private void addFences()
+    private void addMiddleGround()
     {
-        // Three fences on left side of world
-        int x = HALF_TILE_SIZE + TILE_SIZE * 5;
-        int y = VISIBLE_HEIGHT - HALF_TILE_SIZE - TILE_SIZE;
-        Fence fence1 = new Fence(x, y);
-        addObject(fence1, x, y);
+        // Limit blocks created to be 150
+        // i is the tile length
+        for (int i = 0; i < 150; i += 32)
+        { 
+        // tiles will be created starting at x = 350 and y = 400
+            int x = i + 350;
+            int y = 400;
+            // Create a ground tile
+            Ground groundTile = new Ground(x, y);
 
-        x = HALF_TILE_SIZE + TILE_SIZE * 6;
-        y = VISIBLE_HEIGHT - HALF_TILE_SIZE - TILE_SIZE;        
-        Fence fence2 = new Fence(x, y);
-        addObject(fence2, x, y);
-
-        x = HALF_TILE_SIZE + TILE_SIZE * 7;
-        y = VISIBLE_HEIGHT - HALF_TILE_SIZE - TILE_SIZE;
-        Fence fence3 = new Fence(x, y);
-        addObject(fence3, x, y);
-
-        // Two fences on right side of world
-        x = SCROLLABLE_WIDTH - HALF_TILE_SIZE - TILE_SIZE * 3;
-        y = VISIBLE_HEIGHT / 2;
-        Fence fence4 = new Fence(x, y);
-        addObject(fence4, x, y);
-
-        x = SCROLLABLE_WIDTH - HALF_TILE_SIZE - TILE_SIZE * 4;
-        y = VISIBLE_HEIGHT / 2;
-        Fence fence5 = new Fence(x, y);
-        addObject(fence5, x, y);
-    }
-
-    /**
-     * Add steps made out of metal plates leading to end of world.
-     */
-    private void addMetalPlateSteps()
-    {
-        // How many plates total?
-        final int COUNT_OF_METAL_PLATES = 20;
-        final int PLATES_PER_GROUP = 4;
-
-        // Add groups of plates
-        for (int i = 0; i < COUNT_OF_METAL_PLATES / PLATES_PER_GROUP; i += 1)
-        {
-            // Group of four metal plates all at same y position
-            int y = VISIBLE_HEIGHT - HALF_TILE_SIZE * 3 - i * TILE_SIZE;
-
-            // Add the individual plates in a given group
-            for (int j = 0; j < PLATES_PER_GROUP; j += 1)
-            {
-                int x = VISIBLE_WIDTH + TILE_SIZE * 2 + TILE_SIZE * (i + j) + TILE_SIZE * 5 * i;
-                MetalPlate plate = new MetalPlate(x, y);
-                addObject(plate, x, y);
-            }
+            // Add the objects
+            addObject(groundTile, x, y);
         }
     }
 
-    /**
-     * Add a few clouds for the opening scene.
-     */
+    private void addMiddleGround2()
+    {
+        for (int i = 0; i < 150; i += 32)
+        {
+        // tiles will be created starting at 525 and y = 350
+            int x = i + 525;
+            int y = 350;
+            // Create a ground tile
+            Ground groundTile = new Ground(x, y);
+
+            // Add the objects
+            addObject(groundTile, x, y);
+        }
+    }
+  
+    private void addmetalPlates()
+    {
+        for (int i = 0; i < 200; i += 32)
+        {
+            int x = i + 700;
+            int y = 400 - i;
+            
+            MetalPlate metalplate = new MetalPlate(x, y);
+            addObject(metalplate, x, y);
+        }
+        
+         for (int i = 0; i < 200; i += 32)
+        {
+            int x = i + 930;
+            int y = 202 + i;
+            
+            MetalPlate metalplate = new MetalPlate(x, y);
+            addObject(metalplate, x, y);
+        }
+    }
     private void addClouds()
     {
         Cloud cloud1 = new Cloud(170, 125);
