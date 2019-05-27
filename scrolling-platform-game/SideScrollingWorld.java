@@ -65,15 +65,8 @@ public class SideScrollingWorld extends World
      */
     private void setup()
     {
-        // TO STUDENTS: Add, revise, or remove methods as needed to define your own game's world
-        // addLeftGround();
-        // addFences();
-        // addMetalPlateSteps();
-        // addClouds();
-        // addRightGround();
-        
         GeoffLevel();
-         addHero();
+        addHero();
     }
 
     private void GeoffLevel()
@@ -83,8 +76,9 @@ public class SideScrollingWorld extends World
         addMiddleGround2();
         addClouds();
         addmetalPlates();
+        addEndGround();
     }
-  
+
     
     /**
      * Add blocks to create the ground to walk on at bottom-left of scrollable world.
@@ -153,15 +147,44 @@ public class SideScrollingWorld extends World
             addObject(metalplate, x, y);
         }
         
-         for (int i = 0; i < 200; i += 32)
+         for (int i = 0; i < 232; i += 32)
         {
-            int x = i + 930;
-            int y = 202 + i;
+            int x = i + 980;
+            int y = 207 + i;
             
             MetalPlate metalplate = new MetalPlate(x, y);
             addObject(metalplate, x, y);
         }
     }
+    
+    private void addEndGround()
+    {
+        for (int i = 0; i < 150; i += 32)
+        { 
+        // tiles will be created starting at x = 350 and y = 400
+            int x = i + 1315;
+            int y = 400;
+            // Create a ground tile
+            Ground groundTile = new Ground(x, y);
+
+            // Add the objects
+            addObject(groundTile, x, y);
+        }
+        
+        for (int i = 0; i < 2000; i += 32)
+        { 
+        // tiles will be created starting at x = 350 and y = 400
+            int x = i + 1500;
+            int y = 350;
+            // Create a ground tile
+            Ground groundTile = new Ground(x, y);
+
+            // Add the objects
+            addObject(groundTile, x, y);
+        }
+        
+    }
+    
     private void addClouds()
     {
         Cloud cloud1 = new Cloud(170, 125);
@@ -196,45 +219,7 @@ public class SideScrollingWorld extends World
         addObject(theHero, initialX, getHeight() / 4 * 3);
     }
 
-    /**
-     * Add blocks to create the ground to walk on at top-right of scrollable world.
-     */
-    private void addRightGround()
-    {
-        // Constants to control dimensions of the ground at end of world
-        final int COUNT_OF_GROUND = 8;
-        final int GROUND_BELOW_COLUMNS = COUNT_OF_GROUND;
-        final int GROUND_BELOW_ROWS = 6;
-        final int COUNT_OF_GROUND_BELOW = GROUND_BELOW_COLUMNS * GROUND_BELOW_ROWS;
-
-        // 1. Make ground at end of level (top layer)
-        for (int i = 0; i < COUNT_OF_GROUND; i += 1)
-        {
-            // Position in wider scrollable world
-            int x = SCROLLABLE_WIDTH - HALF_TILE_SIZE - i * TILE_SIZE;
-            int y = HALF_VISIBLE_HEIGHT + TILE_SIZE;
-
-            // Create object and add it
-            Ground ground = new Ground(x, y);
-            addObject(ground, x, y);
-        }
-
-        // 2. Make sub-ground at end of level (below top layer)
-        for (int i = 0; i < GROUND_BELOW_COLUMNS; i += 1)
-        {
-            for (int j = 0; j < GROUND_BELOW_ROWS; j += 1)
-            {
-                // Position in wider scrollable world
-                int x = SCROLLABLE_WIDTH - HALF_TILE_SIZE - i * TILE_SIZE;
-                int y = HALF_VISIBLE_HEIGHT + TILE_SIZE + TILE_SIZE * (j + 1);
-
-                // Create object and add it
-                GroundBelow groundBelow = new GroundBelow(x, y);
-                addObject(groundBelow, x, y);
-            }
-        }
-    }
-
+    
     /**
      * Return an object reference to the hero.
      */
