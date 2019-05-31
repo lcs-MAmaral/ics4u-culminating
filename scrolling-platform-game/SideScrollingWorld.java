@@ -19,14 +19,14 @@ public class SideScrollingWorld extends World
      */    
     // Tile size in pixels for world elements (blocks, clouds, etc)
     // TO STUDENTS: Modify if your game's tiles have different dimensions
-    private static final int TILE_SIZE = 32;
+    private static final int TILE_SIZE = 36;
     private static final int HALF_TILE_SIZE = TILE_SIZE / 2;
 
     // World size constants
     // TO STUDENTS: Modify only if you're sure
     //              Should be a resolution that's a multiple of TILE_SIZE
-    private static final int VISIBLE_WIDTH = 640;
-    private static final int VISIBLE_HEIGHT = 480;
+    private static final int VISIBLE_WIDTH = 800;
+    private static final int VISIBLE_HEIGHT = 600;
     
     // Additional useful constants based on world size
     public static final int HALF_VISIBLE_WIDTH = VISIBLE_WIDTH / 2;
@@ -34,7 +34,7 @@ public class SideScrollingWorld extends World
     
     // Defining the boundaries of the scrollable world
     // TO STUDENTS: Modify SCROLLABLE_WIDTH if you wish to have a longer level
-    public static final int SCROLLABLE_WIDTH = VISIBLE_WIDTH * 3;
+    public static final int SCROLLABLE_WIDTH = VISIBLE_WIDTH * 4;
     private static final int SCROLLABLE_HEIGHT = VISIBLE_HEIGHT;
 
     // Hero
@@ -66,35 +66,47 @@ public class SideScrollingWorld extends World
     private void setup()
     {
         // TO STUDENTS: Add, revise, or remove methods as needed to define your own game's world
-        addLeftGround();
-        addFences();
-        addMetalPlateSteps();
-        addClouds();
-        addRightGround();
+           addLeftGround();
+          // addFences();
+           addMetalPlateSteps();
+           addClouds();
+           addRightGround();
+        
+        UmailLevel();
         addHero();
     }
 
+    private void UmailLevel()
+    {
+        
+        
+    }
     /**
      * Add blocks to create the ground to walk on at bottom-left of scrollable world.
      */
     private void addLeftGround()
     {
         // How many tiles will cover the bottom of the initial visible area of screen?
-        final int tilesToCreate = getWidth() / TILE_SIZE;
+        // final int tilesToCreate = getWidth() / TILE_SIZE;
+
+        final int tilesToCreate = 21;
 
         // Loop to create and add the tile objects
-        for (int i = 0; i < tilesToCreate; i += 1)
+        //int x = i * TILE_SIZE - HALF_TILE_SIZE;
+        //int y = getHeight() - HALF_TILE_SIZE;
+        for (int i = 3; i < tilesToCreate; i += 2)
         {
             // Add ground objects at bottom of screen
             // NOTE: Actors are added based on their centrepoint, so the math is a bit trickier.
-            int x = i * TILE_SIZE + HALF_TILE_SIZE;
-            int y = getHeight() - HALF_TILE_SIZE;
+            int x = i * TILE_SIZE;
+            int y = getHeight() - 100;
+            
 
             // Create a ground tile
             Ground groundTile = new Ground(x, y);
 
             // Add the objects
-            addObject(groundTile, x, y);
+              addObject(groundTile, x, y);
         }
     }
 
@@ -104,8 +116,8 @@ public class SideScrollingWorld extends World
     private void addFences()
     {
         // Three fences on left side of world
-        int x = HALF_TILE_SIZE + TILE_SIZE * 5;
-        int y = VISIBLE_HEIGHT - HALF_TILE_SIZE - TILE_SIZE;
+        int x = 100;
+        int y = 200;
         Fence fence1 = new Fence(x, y);
         addObject(fence1, x, y);
 
@@ -137,19 +149,20 @@ public class SideScrollingWorld extends World
     private void addMetalPlateSteps()
     {
         // How many plates total?
-        final int COUNT_OF_METAL_PLATES = 20;
-        final int PLATES_PER_GROUP = 4;
+        final int COUNT_OF_METAL_PLATES = 40;
+        final int PLATES_PER_GROUP = 10;
+        //int i = 0; i < COUNT_OF_METAL_PLATES / PLATES_PER_GROUP; i += 10
 
         // Add groups of plates
-        for (int i = 0; i < COUNT_OF_METAL_PLATES / PLATES_PER_GROUP; i += 1)
+        for (int i = 0; i < COUNT_OF_METAL_PLATES / PLATES_PER_GROUP; i += 10)
         {
             // Group of four metal plates all at same y position
-            int y = VISIBLE_HEIGHT - HALF_TILE_SIZE * 3 - i * TILE_SIZE;
+            int y = 300;
 
             // Add the individual plates in a given group
-            for (int j = 0; j < PLATES_PER_GROUP; j += 1)
+            for (int j = 0; j < PLATES_PER_GROUP; j += 2 )
             {
-                int x = VISIBLE_WIDTH + TILE_SIZE * 2 + TILE_SIZE * (i + j) + TILE_SIZE * 5 * i;
+                int x = j * 30;
                 MetalPlate plate = new MetalPlate(x, y);
                 addObject(plate, x, y);
             }
@@ -161,12 +174,12 @@ public class SideScrollingWorld extends World
      */
     private void addClouds()
     {
-        Cloud cloud1 = new Cloud(170, 125);
-        addObject(cloud1, 170, 125);
-        Cloud cloud2 = new Cloud(450, 175);
-        addObject(cloud2, 450, 175);
-        Cloud cloud3 = new Cloud(775, 50);
-        addObject(cloud3, 775, 50);
+        Cloud cloud1 = new Cloud(250, 300);
+        addObject(cloud1, 200, 300);
+        Cloud cloud2 = new Cloud(500, 300);
+        addObject(cloud2, 450, 300);
+        Cloud cloud3 = new Cloud(750, 300);
+        addObject(cloud3, 700, 300);
     }
 
     /**
@@ -199,9 +212,9 @@ public class SideScrollingWorld extends World
     private void addRightGround()
     {
         // Constants to control dimensions of the ground at end of world
-        final int COUNT_OF_GROUND = 8;
+        final int COUNT_OF_GROUND = 4;
         final int GROUND_BELOW_COLUMNS = COUNT_OF_GROUND;
-        final int GROUND_BELOW_ROWS = 6;
+        final int GROUND_BELOW_ROWS = 0;
         final int COUNT_OF_GROUND_BELOW = GROUND_BELOW_COLUMNS * GROUND_BELOW_ROWS;
 
         // 1. Make ground at end of level (top layer)
@@ -219,7 +232,7 @@ public class SideScrollingWorld extends World
         // 2. Make sub-ground at end of level (below top layer)
         for (int i = 0; i < GROUND_BELOW_COLUMNS; i += 1)
         {
-            for (int j = 0; j < GROUND_BELOW_ROWS; j += 1)
+            for (int j = 0; j < GROUND_BELOW_ROWS; j += 2)
             {
                 // Position in wider scrollable world
                 int x = SCROLLABLE_WIDTH - HALF_TILE_SIZE - i * TILE_SIZE;
