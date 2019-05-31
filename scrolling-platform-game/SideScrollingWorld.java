@@ -27,11 +27,11 @@ public class SideScrollingWorld extends World
     //              Should be a resolution that's a multiple of TILE_SIZE
     private static final int VISIBLE_WIDTH = 640;
     private static final int VISIBLE_HEIGHT = 480;
-    
+
     // Additional useful constants based on world size
     public static final int HALF_VISIBLE_WIDTH = VISIBLE_WIDTH / 2;
     private static final int HALF_VISIBLE_HEIGHT = VISIBLE_HEIGHT / 2;
-    
+
     // Defining the boundaries of the scrollable world
     // TO STUDENTS: Modify SCROLLABLE_WIDTH if you wish to have a longer level
     public static final int SCROLLABLE_WIDTH = VISIBLE_WIDTH * 3;
@@ -66,21 +66,43 @@ public class SideScrollingWorld extends World
     private void setup()
     {
         // TO STUDENTS: Add, revise, or remove methods as needed to define your own game's world
-        addLeftGround();
+        addGround();
+        addPyramid();
         addFences();
-        addMetalPlateSteps();
+        //addMetalPlateSteps();
         addClouds();
-        addRightGround();
+        
         addHero();
+    }
+    
+    /**
+     * Add a pyramid.
+     */
+    private void addPyramid()
+    {
+        // Section 1
+        for ( int i = 0; i <= 4; i += 1){
+            // for section 1
+            int x = 9 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
+            int y = 13 * TILE_SIZE + HALF_TILE_SIZE;
+            
+            Ground someGround = new Ground(x, y);
+            addObject( someGround, x, y);
+            
+            
+        }
     }
 
     /**
-     * Add blocks to create the ground to walk on at bottom-left of scrollable world.
+     * Add blocks to create the ground all across the bottom.
      */
-    private void addLeftGround()
+    private void addGround()
     {
         // How many tiles will cover the bottom of the initial visible area of screen?
-        final int tilesToCreate = getWidth() / TILE_SIZE;
+        final int tilesToCreate = SCROLLABLE_WIDTH / TILE_SIZE;
+        
+        // DEBUG
+        System.out.println("tiles being created " + tilesToCreate);
 
         // Loop to create and add the tile objects
         for (int i = 0; i < tilesToCreate; i += 1)
@@ -96,6 +118,27 @@ public class SideScrollingWorld extends World
             // Add the objects
             addObject(groundTile, x, y);
         }
+
+        // For section 2
+        // for (int i = 0; i < 3; i += 1)
+        // {
+            // for (int j = 0; j < 3; j += 1)
+            // {
+                // // Add ground objects at bottom of screen
+                // // NOTE: Actors are added based on their centrepoint, so the math is a bit trickier.
+                // int x = 10 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;;
+                // int y = 11 * TILE_SIZE + HALF_TILE_SIZE + j * TILE_SIZE;
+
+                // // Create a ground tile
+                // Ground groundTile = new Ground(x, y);
+
+                // // Add the objects
+                // addObject(groundTile, x, y);
+            // }
+        // }
+        
+       
+
     }
 
     /**
