@@ -27,11 +27,11 @@ public class SideScrollingWorld extends World
     //              Should be a resolution that's a multiple of TILE_SIZE
     private static final int VISIBLE_WIDTH = 640;
     private static final int VISIBLE_HEIGHT = 480;
-    
+
     // Additional useful constants based on world size
     public static final int HALF_VISIBLE_WIDTH = VISIBLE_WIDTH / 2;
     private static final int HALF_VISIBLE_HEIGHT = VISIBLE_HEIGHT / 2;
-    
+
     // Defining the boundaries of the scrollable world
     // TO STUDENTS: Modify SCROLLABLE_WIDTH if you wish to have a longer level
     public static final int SCROLLABLE_WIDTH = VISIBLE_WIDTH * 3;
@@ -66,12 +66,67 @@ public class SideScrollingWorld extends World
     private void setup()
     {
         // TO STUDENTS: Add, revise, or remove methods as needed to define your own game's world
-        addLeftGround();
-        addFences();
-        addMetalPlateSteps();
-        addClouds();
-        addRightGround();
+        // addLeftGround();
+        // addFences();
+        // addMetalPlateSteps();
+        // addClouds();
+        // addRightGround();
         addHero();
+        matthewLevel();
+    }
+
+    /**
+     * Matthew's level.
+     */
+    private void matthewLevel()
+    {
+
+        // Block group 1
+        addRightGround();
+        addClouds();
+        addLeftGround();
+        // Block group 2
+
+        // How many tiles will cover the bottom of the initial visible area of screen?
+        final int tilesToCreate = getWidth() / TILE_SIZE;
+
+      
+       int x = 700;
+       int y = 400;
+        
+        MetalPlate newMetalPlate = new MetalPlate (x,y);
+        addObject( newMetalPlate, x, y);
+        
+        x= 800;
+        y= 400;
+        MetalPlate newMetalPlate2 = new MetalPlate (x,y);
+        addObject( newMetalPlate2, x, y);
+        
+        x= 850;
+        y= 350;
+        MetalPlate newMetalPlate3 = new MetalPlate (x,y);
+        addObject( newMetalPlate3, x, y);
+
+        x= 925;
+        y= 450;
+        MetalPlate newMetalPlate4 = new MetalPlate (x,y);
+        addObject( newMetalPlate4, x, y);
+        
+        x= 1000;
+        y= 350;
+        MetalPlate newMetalPlate5 = new MetalPlate (x,y);
+        addObject( newMetalPlate5, x, y);
+        
+        x= 1050;
+        y= 300;
+        MetalPlate newMetalPlate6 = new MetalPlate (x,y);
+        addObject( newMetalPlate6, x, y); 
+        
+        x= 1125;
+        y= 275;
+        MetalPlate newMetalPlate7 = new MetalPlate (x,y);
+        addObject( newMetalPlate7, x, y);       
+        
     }
 
     /**
@@ -96,6 +151,8 @@ public class SideScrollingWorld extends World
             // Add the objects
             addObject(groundTile, x, y);
         }
+        
+        
     }
 
     /**
