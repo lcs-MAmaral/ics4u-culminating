@@ -71,8 +71,8 @@ public class SideScrollingWorld extends World
         // addMetalPlateSteps();
         // addClouds();
         // addRightGround();
-        addHero();
         matthewLevel();
+	addHero();
     }
 
     /**
