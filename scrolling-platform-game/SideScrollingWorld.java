@@ -1,13 +1,10 @@
- import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Template for a side-scrolling platform game.
  * 
  * @author R. Gordon
  * @version May 8, 2019
- * 
- * "Mr. Gordon says hi!"
- * "Mr. Gordon says hi again."
  * 
  */
 public class SideScrollingWorld extends World
@@ -65,22 +62,83 @@ public class SideScrollingWorld extends World
      */
     private void setup()
     {
-        // TO STUDENTS: Add, revise, or remove methods as needed to define your own game's world
+        int selection = Greenfoot.getRandomNumber(2);
+        if (selection == 0)
+        {
+            matthewLevel();
+        }
+        else
+        {
+            zachLevel();
+        }
+        addHero();
+    }
+
+    /**
+     * Zach's level
+     */
+    private void zachLevel()
+    {
         addGround();
-       // addPyramid();
         addFences();
-        //addMetalPlateSteps();
         addClouds();
         addStaircase();
         addSecondStaircase();
-    
-        
-       addHero();
     }
-    
 
-      
-    
+    /**
+     * Matthew's level.
+     */
+    private void matthewLevel()
+    {
+
+        // Block group 1
+        addRightGround();
+        addClouds();
+        addLeftGround();
+        // Block group 2
+
+        // How many tiles will cover the bottom of the initial visible area of screen?
+        final int tilesToCreate = getWidth() / TILE_SIZE;
+
+        int x = 700;
+        int y = 400;
+
+        MetalPlate newMetalPlate = new MetalPlate (x,y);
+        addObject( newMetalPlate, x, y);
+
+        x= 800;
+        y= 400;
+        MetalPlate newMetalPlate2 = new MetalPlate (x,y);
+        addObject( newMetalPlate2, x, y);
+
+        x= 850;
+        y= 350;
+        MetalPlate newMetalPlate3 = new MetalPlate (x,y);
+        addObject( newMetalPlate3, x, y);
+
+        x= 925;
+        y= 450;
+        MetalPlate newMetalPlate4 = new MetalPlate (x,y);
+        addObject( newMetalPlate4, x, y);
+
+        x= 1000;
+        y= 350;
+        MetalPlate newMetalPlate5 = new MetalPlate (x,y);
+        addObject( newMetalPlate5, x, y);
+
+        x= 1050;
+        y= 300;
+        MetalPlate newMetalPlate6 = new MetalPlate (x,y);
+        addObject( newMetalPlate6, x, y); 
+
+        x= 1125;
+        y= 275;
+        MetalPlate newMetalPlate7 = new MetalPlate (x,y);
+        addObject( newMetalPlate7, x, y);       
+
+    }
+
     
     /**
      * Add a pyramid.
@@ -92,153 +150,129 @@ public class SideScrollingWorld extends World
             // for section 1
             int x = 9 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
             int y = 13 * TILE_SIZE + HALF_TILE_SIZE;
-            
+
             Ground someGround = new Ground(x, y);
             addObject( someGround, x, y);
-            
-            
+
         }
-        
         //Section 2
         for (int i = 0; i <= 2; i += 1){
             //for section 2
             int x = 10 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
             int y = 12 * TILE_SIZE + HALF_TILE_SIZE;
-            
+
             Ground niceGround = new Ground (x, y);
             addObject(niceGround, x, y);
-            
-          
-            
-    }
-    
-    //Section 3
-      int x = 11 * TILE_SIZE + HALF_TILE_SIZE + 0 * TILE_SIZE;
-      int y = 11 * TILE_SIZE + HALF_TILE_SIZE;
-      
-      Ground coolGround = new Ground (x, y);
-      addObject(coolGround, x, y);
-      
-      
-}
 
-private void addStaircase()
-{
-    for ( int i = 0; i <= 6; i += 1){
+        }
+        //Section 3
+        int x = 11 * TILE_SIZE + HALF_TILE_SIZE + 0 * TILE_SIZE;
+        int y = 11 * TILE_SIZE + HALF_TILE_SIZE;
+
+        Ground coolGround = new Ground (x, y);
+        addObject(coolGround, x, y);
+
+    }
+
+    private void addStaircase()
+    {
+        for ( int i = 0; i <= 6; i += 1){
             // for section 1
             int x = 25 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
             int y = 13 * TILE_SIZE + HALF_TILE_SIZE;
-            
+
             Ground hypeGround = new Ground(x, y);
             addObject( hypeGround, x, y);
-            
 
-} 
-for ( int i = 0; i <= 4; i += 1){
+        } 
+        for ( int i = 0; i <= 4; i += 1){
             // for section 1
             int x = 27 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
             int y = 12 * TILE_SIZE + HALF_TILE_SIZE;
-            
+
             Ground hypeGround = new Ground(x, y);
             addObject( hypeGround, x, y);
-            
-}
-for ( int i = 0; i <= 2; i += 1){
+
+        }
+        for ( int i = 0; i <= 2; i += 1){
             // for section 1
             int x = 29 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
             int y = 11 * TILE_SIZE + HALF_TILE_SIZE;
-            
+
             Ground hypeGround = new Ground(x, y);
             addObject( hypeGround, x, y);
-            
-}
-for ( int i = 0; i <= 1; i += 1){
+
+        }
+        for ( int i = 0; i <= 1; i += 1){
             // for section 1
             int x = 30 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
             int y = 10 * TILE_SIZE + HALF_TILE_SIZE;
-            
+
             Ground hypeGround = new Ground(x, y);
             addObject( hypeGround, x, y);
-            
-}
 
+        }
 
- int x = 31 * TILE_SIZE + HALF_TILE_SIZE + 0 * TILE_SIZE;
- int y = 9 * TILE_SIZE + HALF_TILE_SIZE;
-            
-            Ground hypeGround = new Ground(x, y);
-            addObject( hypeGround, x, y);
-            
-         
-            
-            
+        int x = 31 * TILE_SIZE + HALF_TILE_SIZE + 0 * TILE_SIZE;
+        int y = 9 * TILE_SIZE + HALF_TILE_SIZE;
+
+        Ground hypeGround = new Ground(x, y);
+        addObject( hypeGround, x, y);
+
         
-            
-}
+    }
 
-private void addSecondStaircase()
-{
-   
-            // for section 5
-            int x = 34 * TILE_SIZE + HALF_TILE_SIZE + 0 * TILE_SIZE;
-            int y = 9 * TILE_SIZE + HALF_TILE_SIZE;
-            
-            Ground shmeekGround = new Ground(x, y);
-            addObject( shmeekGround, x, y);
-            
-            for ( int i = 0; i <= 1; i += 1){
+    private void addSecondStaircase()
+    {
+
+        // for section 5
+        int x = 34 * TILE_SIZE + HALF_TILE_SIZE + 0 * TILE_SIZE;
+        int y = 9 * TILE_SIZE + HALF_TILE_SIZE;
+
+        Ground shmeekGround = new Ground(x, y);
+        addObject( shmeekGround, x, y);
+
+        for ( int i = 0; i <= 1; i += 1){
             // for section 1
             int a = 34 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
             int b = 10 * TILE_SIZE + HALF_TILE_SIZE;
-            
+
             Ground hypeGround = new Ground(a, b);
             addObject( hypeGround, a, b);
-            
-}
- for ( int i = 0; i <= 2; i += 1){
+
+        }
+        for ( int i = 0; i <= 2; i += 1){
             // for section 1
             int a = 34 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
             int b = 11 * TILE_SIZE + HALF_TILE_SIZE;
-            
+
             Ground hypeGround = new Ground(a, b);
             addObject( hypeGround, a, b);
-            
-}
- for ( int i = 0; i <= 4; i += 1){
+
+        }
+        for ( int i = 0; i <= 4; i += 1){
             // for section 1
             int a = 34 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
             int b = 12 * TILE_SIZE + HALF_TILE_SIZE;
-            
+
             Ground hypeGround = new Ground(a, b);
             addObject( hypeGround, a, b);
-            
-}
- for ( int i = 0; i <= 6; i += 1){
+
+        }
+        for ( int i = 0; i <= 6; i += 1){
             // for section 1
             int a = 34 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
             int b = 13 * TILE_SIZE + HALF_TILE_SIZE;
-            
+
             Ground hypeGround = new Ground(a, b);
             addObject( hypeGround, a, b);
-            
-}
+
+        }
 
 
- 
-        
-
-}
- 
- 
-
+    }
 
     
-    
-
-
-
-    
-
 
 
     /**
@@ -250,7 +284,7 @@ private void addSecondStaircase()
         final int tilesToCreate = 32;
         final int COUNT_OF_GROUND = 26;
         final int greatSpace = 44;
-        
+
         // DEBUG
         //System.out.println("tiles being created " + tilesToCreate);
 
@@ -258,9 +292,9 @@ private void addSecondStaircase()
         for (int i = 16; i < tilesToCreate; i += 1)
         {
             // Add ground objects at bottom of screen
-         
+
             //This is for the final section
-          
+
             int x = i * TILE_SIZE + HALF_TILE_SIZE;
             int y = getHeight() - HALF_TILE_SIZE;
 
@@ -270,7 +304,7 @@ private void addSecondStaircase()
             // Add the objects
             addObject(groundTile, x, y);
         }
-        
+
         for (int i = 0; i < COUNT_OF_GROUND; i += 1)
         {
             // Position in wider scrollable world
@@ -281,7 +315,7 @@ private void addSecondStaircase()
             Ground ground = new Ground(x, y);
             addObject(ground, x, y);
         }
-        
+
         for (int i = 0; i < greatSpace; i += 1)
         {
             // Position in wider scrollable world
@@ -293,26 +327,6 @@ private void addSecondStaircase()
             Ground ground = new Ground(x, y);
             addObject(ground, x, y);
         }
-
-        // For section 2
-        // for (int i = 0; i < 3; i += 1)
-        // {
-            // for (int j = 0; j < 3; j += 1)
-            // {
-                // // Add ground objects at bottom of screen
-                // // NOTE: Actors are added based on their centrepoint, so the math is a bit trickier.
-                // int x = 10 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;;
-                // int y = 11 * TILE_SIZE + HALF_TILE_SIZE + j * TILE_SIZE;
-
-                // // Create a ground tile
-                // Ground groundTile = new Ground(x, y);
-
-                // // Add the objects
-                // addObject(groundTile, x, y);
-            // }
-        // }
-        
-       
 
     }
 
@@ -347,12 +361,8 @@ private void addSecondStaircase()
         y = VISIBLE_HEIGHT - HALF_TILE_SIZE - TILE_SIZE;
         Fence fence5 = new Fence(x, y);
         addObject(fence5, x, y);
-        
-       
-        
-        
-    }
 
+    }
     /**
      * Add steps made out of metal plates leading to end of world.
      */
@@ -415,6 +425,30 @@ private void addSecondStaircase()
         addObject(theHero, initialX, getHeight() / 4 * 3);
     }
 
+    /**
+     * Add blocks to create the ground to walk on at bottom-left of scrollable world.
+     */
+    private void addLeftGround()
+    {
+        // How many tiles will cover the bottom of the initial visible area of screen?
+        final int tilesToCreate = getWidth() / TILE_SIZE;
+
+        // Loop to create and add the tile objects
+        for (int i = 0; i < tilesToCreate; i += 1)
+        {
+            // Add ground objects at bottom of screen
+            // NOTE: Actors are added based on their centrepoint, so the math is a bit trickier.
+            int x = i * TILE_SIZE + HALF_TILE_SIZE;
+            int y = getHeight() - HALF_TILE_SIZE;
+
+            // Create a ground tile
+            Ground groundTile = new Ground(x, y);
+
+            // Add the objects
+            addObject(groundTile, x, y);
+        }
+
+    }
     /**
      * Add blocks to create the ground to walk on at top-right of scrollable world.
      */
