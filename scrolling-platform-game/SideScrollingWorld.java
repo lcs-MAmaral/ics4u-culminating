@@ -73,9 +73,14 @@ public class SideScrollingWorld extends World
         addClouds();
         addStaircase();
         addSecondStaircase();
+    
         
-        addHero();
+       addHero();
     }
+    
+
+      
+    
     
     /**
      * Add a pyramid.
@@ -244,18 +249,18 @@ private void addSecondStaircase()
         // How many tiles will cover the bottom of the initial visible area of screen?
         final int tilesToCreate = 32;
         final int COUNT_OF_GROUND = 26;
-        final int greatSpace = 45;
+        final int greatSpace = 44;
         
         // DEBUG
-        System.out.println("tiles being created " + tilesToCreate);
+        //System.out.println("tiles being created " + tilesToCreate);
 
         // Loop to create and add the tile objects
         for (int i = 16; i < tilesToCreate; i += 1)
         {
             // Add ground objects at bottom of screen
          
-            //This is for the first section
-            // NOTE: Actors are added based on their centrepoint, so the math is a bit trickier.
+            //This is for the final section
+          
             int x = i * TILE_SIZE + HALF_TILE_SIZE;
             int y = getHeight() - HALF_TILE_SIZE;
 
@@ -266,7 +271,7 @@ private void addSecondStaircase()
             addObject(groundTile, x, y);
         }
         
-        for (int i = 2; i < COUNT_OF_GROUND; i += 1)
+        for (int i = 0; i < COUNT_OF_GROUND; i += 1)
         {
             // Position in wider scrollable world
             int x = SCROLLABLE_WIDTH - HALF_TILE_SIZE - i * TILE_SIZE;
